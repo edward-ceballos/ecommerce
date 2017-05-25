@@ -1,0 +1,225 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	/*font: inherit;*/
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	background: skyblue;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+
+/*personalizado*/
+
+.main_wrapper{
+	width: 1000px;
+	height: auto;
+	margin: 0 auto;
+}
+
+.header_wrapper{
+	width: 1000px;
+	height: 150px;
+	margin: auto;
+}
+
+#logo{
+	float: left;
+	height: 150px;
+	width: 20%;
+}
+
+#banner{
+	float: right;
+	height: 150px;
+	width: 80%;
+}
+
+.menubar{
+	width: 1000px;
+	height: 50px;
+	background-color: gray;
+	color: white;
+	margin: 0 auto;
+}
+
+#menu{
+	padding: 0;
+	margin: 0;
+	line-height: 45px;
+	float: left;
+}
+
+#menu li{
+	list-style: none;
+	display: inline;
+}
+
+#menu a{
+	text-decoration: none;
+	color: white;
+	padding: 8px;
+	margin: 5px;
+	font-size: 18px;
+	font-family: COMIC SANS MS;
+}
+
+#menu a:hover{
+	color: orange;
+	font-weight: bolder;
+	background-color: black;
+}
+
+#menu a:active{
+	color: orange;
+	font-weight: bolder;
+	background-color: black;
+}
+
+#form{
+	float: right;
+	padding-right: 8px;
+	line-height: 45px;
+}
+
+.content_wrapper{
+	width: 1000px;
+	height: auto;
+	margin: auto;
+	background-color: pink;
+}
+
+#content_area{
+	width: 800px;
+	height: auto;
+	float: right;
+	background-color: pink;
+}
+
+#sidebar{
+	width: 200px;
+	height: 100%;
+	float: left;
+	background-color: black;
+}
+
+.sidebar_title{
+	background-color: white;
+	color: black;
+	font-size: 20px;
+	font-family: Arial;
+	padding: 10px;
+}
+
+.cats{
+	padding: 10px;
+}
+
+.cats li{
+	list-style: none;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.cats li a{
+	color: white;
+	font-size: 18px;
+	font-family: comic Sans MS;
+	text-decoration: none;
+}
+
+.cats li a:hover{
+	color: orange;
+	/*background-color: orange;*/
+	text-decoration: underline;
+	font-weight: bolder;
+}
+
+.products_box{
+	width: 780px;
+	text-align: center;
+	margin-left: 30px;
+	margin-bottom: 10px;
+
+}
+
+.single_product{
+	float: left;
+	margin-left: 30px;
+	padding: 10px;
+}
+
+.single_product img{
+	border: 2px solid black;
+}
+
+#shopping_cart{
+	width: 800px;
+	height: 50px;
+	background-color: black;
+	color: white;
+}
+
+#shopping_cart span{
+	float: right;
+	font-size: 18px;
+	padding: 5px;
+	line-height: 40px;
+}
+
+#footer{
+	width: 1000px;
+	height: 100px;
+	background-color: gray;
+	clear: both;
+}
+
+
+
+
+
+
+
+
