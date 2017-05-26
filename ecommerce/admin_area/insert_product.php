@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
 	include '../includes/db.php';
-	include 'img.php';
+	include '../includes/img.php';
 	if (isset($_POST['insert_post'])) {
 
 		//data text
@@ -17,7 +17,7 @@
 		$product_image_tmp = $_FILES['product_image']['tmp_name'];
 		$filename = "product_images/$product_image";
 		if (move_uploaded_file($product_image_tmp, $filename)) {
-			imgCrop($filename, 150, 150);
+			imgCrop($filename, 180, 180);
 		}
 
 		$insert_product = "INSERT INTO `products`( `product_cat`, `product_brand`, `product_title`, `product_price`, `product_desc`, `product_image`, `product_keywords`) VALUES ('$product_cat', '$product_brand', '$product_title', '$product_price', '$product_desc', '$product_image', '$product_keywords')";

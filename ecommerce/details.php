@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php 
-	include 'functions.php';
+include 'functions/functions.php';
 ?>
 <html>
 <head>
@@ -21,12 +21,14 @@
 		<!-- menubar start -->
 		<div class="menubar">
 			<ul id="menu">
-				<li><a href="#home">HOME</a></li>
-				<li><a href="">All Products</a></li>
-				<li><a href="">My Account</a></li>
-				<li><a href="">Sign Up</a></li>
-				<li><a href="">Shopping Cart</a></li>
-				<li><a href="">Constacts Us</a></li>
+				<li><a href="index.php">HOME</a></li>
+				<li><a href="all_products.php">All Products</a></li>
+				<li><a href="customer/my_account.php">My Account</a></li>
+				<?php if (!isset($_SESSION['customer_email'])): ?>
+					<li><a href="checkout.php">Sign Up</a></li>
+				<?php endif ?>
+				<li><a href="cart.php">Shopping Cart</a></li>
+				<li><a href="contact.php">Constacts Us</a></li>
 			</ul>
 			<div id="form">
 				<form method="get" action="result.php" enctype="multipart/form-data">
@@ -53,7 +55,10 @@
 
 				<div id="shopping_cart">
 					<span>
-						Welcome guest! <b style="color: yellow;">Shopping cart</b> - Total Items: - Total Price: <a href="cart.php">Go to cart</a>
+						<?php if (isset($_SESSION['customer_email'])): ?>
+							Welcome <?php echo @$_SESSION['name'] ?>!
+						<?php endif ?>
+						<b style="color: yellow;">Shopping cart</b> - Total Items: - Total Price: <a href="cart.php">Go to cart</a>
 					</span>
 				</div>
 
@@ -78,17 +83,17 @@
 							$product_image = imgMedium('admin_area/product_images/'.$product_image);
 							
 							echo "
-								<div class='single_product'>
-									<h3>$product_title</h3>
-										<img src='$product_image' alt='' height='' width=''>
-									<p>US$. $product_price</p>
-									<div>$product_desc</div>
-									<a href='index.php?pro_id=$product_id' style='float: right;'><button>Add to Cart</button></a>
-								</div>
+							<div class='single_product'>
+								<h3>$product_title</h3>
+								<img src='$product_image' alt='' height='' width=''>
+								<p>US$. $product_price</p>
+								<div>$product_desc</div>
+								<a href='index.php?pro_id=$product_id' style='float: right;'><button>Add to Cart</button></a>
+							</div>
 							";
 						}
 					}
-						
+					
 					?>
 				</div>
 			</div>

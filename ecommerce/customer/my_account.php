@@ -23,14 +23,14 @@ include 'functions/functions.php';
 		<!-- menubar start -->
 		<div class="menubar">
 			<ul id="menu">
-				<li><a href="index.php">HOME</a></li>
-				<li><a href="all_products.php">All Products</a></li>
-				<li><a href="customer/my_account.php">My Account</a></li>
+				<li><a href="../index.php">HOME</a></li>
+				<li><a href="../all_products.php">All Products</a></li>
+				<li><a href="../customer/my_account.php">My Account</a></li>
 				<?php if (!isset($_SESSION['customer_email'])): ?>
-					<li><a href="checkout.php">Sign Up</a></li>
+					<li><a href="../checkout.php">Sign Up</a></li>
 				<?php endif ?>
-				<li><a href="cart.php">Shopping Cart</a></li>
-				<li><a href="contact.php">Constacts Us</a></li>
+				<li><a href="../cart.php">Shopping Cart</a></li>
+				<li><a href="../contact.php">Constacts Us</a></li>
 			</ul>
 			<div id="form">
 				<form method="get" action="result.php" enctype="multipart/form-data">
@@ -44,13 +44,20 @@ include 'functions/functions.php';
 		<!-- content_wrapper start -->
 		<div class="content_wrapper">
 			<div id="sidebar">
-				<div class="sidebar_title">Categories</div>
+				<div class="sidebar_title">My Account</div>
 				<ul class="cats">
-					<?php getCats() ?>
-				</ul>
-				<div class="sidebar_title">Brands</div>
-				<ul class="cats">
-					<?php getBrands() ?>
+				<?php 
+					$user = $_SESSION['customer_email'];
+					$get_img = "SELECT * FROM `customer` WHERE `customer_email` = '$user'";
+					$run_img = mysqli_query($con, $get_img);
+					$row_img = mysqli_fetch_array($run_img);
+					$c_img = $row_img['customer_image'];
+				?>
+					<img src="<?php echo @imgCrop('customer_images/'.$c_img, 100, 100); ?>" alt="">
+					<li><a href="my_account.php?my_orders">My Orders</a></li>
+					<li><a href="my_account.php?edit_account">Edit Account</a></li>
+					<li><a href="my_account.php?change_pass">Change Pass</a></li>
+					<li><a href="my_account.php?delete_account">Delete Account</a></li>
 				</ul>
 			</div>
 			<div id="content_area">
@@ -60,21 +67,21 @@ include 'functions/functions.php';
 						<?php if (isset($_SESSION['customer_email'])): ?>
 							Welcome <?php echo @$_SESSION['name'] ?>!
 						<?php endif ?>
-						<b style="color: yellow;">Shopping cart</b> - Total Items: <?php total_items() ?> - Total Price: $ <?php total_price() ?> <a href="cart.php" style="color: yellow;">Go to cart</a>
+						<b style="color: yellow;">Shopping cart</b> - Total Items: <?php total_items() ?> - Total Price: $ <?php total_price() ?> <a href="../cart.php" style="color: yellow;">Go to cart</a>
 
 						<?php 
 						if (!isset($_SESSION['customer_email'])) {
-							echo "<a href='checkout.php' style='color: orange;'>Login</a>";
+							echo "<a href='../checkout.php' style='color: orange;'>Login</a>";
 						}
 						else{
-							echo "<a href='logout.php' style='color: orange;'>Logout</a>";
+							echo "<a href='../logout.php' style='color: orange;'>Logout</a>";
 						}
 						?>
 					</span>
 				</div>
 
 				<div class="products_box">
-					<?php getProducts() ?>
+
 				</div>
 			</div>
 		</div>

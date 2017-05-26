@@ -48,9 +48,6 @@ table {
 	border-spacing: 0;
 }
 
-
-
-
 /*personalizado*/
 h1{
 	font-size: 1.3em;
@@ -147,8 +144,9 @@ td{
 #sidebar{
 	width: 200px;
 	height: 100%;
-	float: left;
+	float: right;
 	background-color: black;
+	text-align: right;
 }
 
 .sidebar_title{
@@ -167,6 +165,7 @@ td{
 	list-style: none;
 	padding-top: 3px;
 	padding-bottom: 3px;
+
 }
 
 .cats li a{

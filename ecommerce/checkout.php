@@ -54,13 +54,13 @@ include 'functions/functions.php';
 				</ul>
 			</div>
 			<div id="content_area">
-
+				<?php cart() ?>
 				<div id="shopping_cart">
 					<span>
 						<?php if (isset($_SESSION['customer_email'])): ?>
 							Welcome <?php echo @$_SESSION['name'] ?>!
 						<?php endif ?>
-						<b style="color: yellow;">Shopping cart</b> - Total Items: - Total Price: <a href="cart.php">Go to cart</a>
+						<b style="color: yellow;">Shopping cart</b> - Total Items: <?php total_items() ?> - Total Price: $ <?php total_price() ?> <a href="cart.php" style="color: yellow;">Go to cart</a>
 						<?php 
 						if (!isset($_SESSION['customer_email'])) {
 							echo "<a href='checkout.php' style='color: orange;'>Login</a>";
@@ -74,47 +74,12 @@ include 'functions/functions.php';
 
 				<div class="products_box">
 					<?php 
-					if(isset($_GET['user_query'])){
-						$user_query = $_GET['user_query'];
-						$get_products = "SELECT * FROM `products` WHERE `product_keywords` LIKE '%$user_query%'";
-						$message = '<p>No product add with the user_query</p>';
+					if (!isset($_SESSION['customer_email'])) {
+						include 'customer_login.php';
 					}
 					else{
-						$get_products = "SELECT * FROM `products`";
-						$message = '<p>No product add</p>';
+						include 'payment.php';
 					}
-
-					$run_products = mysqli_query($con, $get_products);
-
-					if (mysqli_num_rows($run_products) > 0) {
-						while ($rows_products = mysqli_fetch_array($run_products)) {
-
-							$product_id = $rows_products['product_id'];
-							$product_title = $rows_products['product_title'];
-							$product_cat = $rows_products['product_cat'];
-							$product_brand = $rows_products['product_brand'];	
-							$product_price = $rows_products['product_price'];	
-							$product_desc = $rows_products['product_desc'];
-							$product_keywords = $rows_products['product_keywords'];
-							$product_image = $rows_products['product_image'];
-
-							echo "
-							<div class='single_product'>
-								<h3>$product_title</h3>
-								<a href='details.php?pro_id=$product_id'>
-									<img src='admin_area/product_images/$product_image' alt='' height='180' width='180'>
-								</a>
-								<p>US$. $product_price</p>
-								<a href='details.php?pro_id=$product_id' style='float: left;'>Details</a>
-								<a href='index.php?pro_id=$product_id' style='float: right;'><button>Add to Cart</button></a>
-							</div>
-							";
-
-						}
-					}else{
-						echo($message);
-					}
-
 					?>
 				</div>
 			</div>
