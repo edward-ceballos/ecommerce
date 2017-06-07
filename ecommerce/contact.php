@@ -74,6 +74,7 @@ include 'functions/functions.php';
 				</div>
 
 				<div class="products_box">
+				
 				</div>
 			</div>
 		</div>
